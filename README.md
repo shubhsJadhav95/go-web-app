@@ -79,3 +79,6 @@ cp ../../../k8s/maifest/*
 
 helm install go-webapp ./go-webapp-chart
 
+## Github Action
+
+mkdir .github/workflow/ci.yaml

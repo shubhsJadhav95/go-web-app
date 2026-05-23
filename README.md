@@ -82,3 +82,23 @@ helm install go-webapp ./go-webapp-chart
 ## Github Action
 
 mkdir .github/workflow/ci.yaml
+
+Write COnfiguration Git Push
+
+## ArgoCD
+
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+kubectl get svc argocd-server -n argocd
+
+ kubectl get secrets -n argocd
+ kubectl edit secrets argocd-initial-admin-secret -n argocd
+
+ echo  cUlUTEdPN3ByMHNlQW9kag== | base64 --decode
+
+ Login- admin Password
+
+ ## Flow Chart:
+
+![Flowchart](static/images/go-webapp.png)

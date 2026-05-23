@@ -18,9 +18,11 @@ The server will start on port 8080. You can access it by navigating to `http://l
 
 ## Docker Configuration
 
-docker build t shubhsjadhav95/go-webapp:v1 .
+docker build -t shubhsjadhav95/go-webapp:v1 .
 
-docker run -d -p 8080:8080 --name go-webapp shubhsjadhav95/go-webapp:v1
+docker run -d -p 8080:8080 --name go-webapp shubhsjadhav95/go-webapp:
+
+docker push shubhsjadhav95/go-webapp:v1
 
 ## K8s configurations
 
@@ -57,4 +59,23 @@ kubectl get svc go-webapp //Get Port
 kubectl get nodes -o wide //Get External IP
 
 http://<External IP>:<Port>
+
+SG inbond rule add TCP PORT
+
+### Install Nginx Controller
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+
+kubectl get pods -n ingress-nginx
+
+
+## HELM
+
+helm create go-webapp-chart
+
+cd go-webapp-chart/template
+
+cp ../../../k8s/maifest/* 
+
+helm install go-webapp ./go-webapp-chart
 
